@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+<AlienRace.RaceSettings>
+    <defName>Nyaron_Settings</defName>
+     <pawnKindSettings>
+            
+			<startingColonists>
+				<li>
+				<pawnKindEntries>
+					<li>
+                    <kindDefs>
+                        <li>NyaronPlayerColonist</li>
+                    </kindDefs>
+                    <chance>10.0</chance>
+					</li>
+				</pawnKindEntries>
+					<factionDefs>
+						<li>NyaronPlayerColony</li> 
+					</factionDefs>
+				</li>
+			</startingColonists>
+			<alienslavekinds>
+                <li>
+                    <kindDefs>
+                        <li>NyaronSlave</li>
+                    </kindDefs>
+                    <chance>30.0</chance>
+                </li>
+            </alienslavekinds>
+            <alienrefugeekinds> <!-- pawnkinds listed here will show up as chased refugees for the event -->
+                <li>
+                    <kindDefs>
+                        <li>NyaronRefugee</li>
+                    </kindDefs>
+                    <chance>30.0</chance>
+                </li>
+            </alienrefugeekinds>
+            <alienwandererkinds> <!-- pawnkinds listed here will show up as wanders that join your colony for the event -->
+                <li>
+                    <pawnKindEntries>
+                        <li>
+                            <kindDefs>
+								<li>Nyaron_Colonist</li>
+                            </kindDefs>
+                            <chance>30.0</chance>
+                        </li>
+                    </pawnKindEntries>
+                    <factionDefs>
+                        <li>NyaronFaction</li> 
+                    </factionDefs>
+                </li>
+            </alienwandererkinds>
+        </pawnKindSettings>
+  </AlienRace.RaceSettings>
+
+
+<ThingDef Name="BaseNyaronPawn" ParentName="BasePawn" Abstract="True">
+    <statBases>
+      <Mass>65</Mass>
+    </statBases>
+	<inspectorTabs>
+	</inspectorTabs>
+	<comps>
+    </comps>
+  </ThingDef>
+
+<AlienRace.ThingDef_AlienRace ParentName="BaseNyaronPawn">
+    <defName>Alien_Nyaron</defName>
+    <label>Nyaron</label>
+    <description>The Marvelous gift of glitterworld bionics. A humanoid with cat ears and a tail.</description>
+    <!-- 에일리언레이스셋팅 -->
+	
+	<alienRace>
+        <graphicPaths>
+			<!-- This tells the game to look in the folder MODFOLER/Textures/Things/Pawn/Heads/ for Images -->
+            <!-- -->
+                <head>Things/Pawn/Nyaron/Heads/</head>
+                <body>Things/Pawn/Nyaron/Bodies/</body>
+                <skeleton>Things/Pawn/Nyaron/Bodies/Dessicated/Dessicated_Male</skeleton>
+                <skull>Things/Pawn/Nyaron/Heads/Skull/Skull</skull>
+			<!-- -->
+        </graphicPaths>
+        <generalSettings>
+            <humanRecipeImport>true</humanRecipeImport>
+            <maleGenderProbability>0</maleGenderProbability>
+            <immuneToAge>false</immuneToAge>
+			<maxDamageForSocialfight>8</maxDamageForSocialfight>
+			<!-- 
+			<useOnlyPawnkindBackstories>true</useOnlyPawnkindBackstories>-->
+            <forcedRaceTraitEntries>
+
+            </forcedRaceTraitEntries>
+				<alienPartGenerator>
+					<borderScale>1</borderScale>
+					<atlasScale>4</atlasScale>
+				<!-- 4월 이후 har 변경점에 대응 -->
+				
+					<oldHairAgeRange>55.0~105.0</oldHairAgeRange>
+					<oldHairAgeCurve>
+					  <points>
+						<li>(0, 0)</li>
+						<li>(55, 0)</li>
+						<li>(75, 0.7)</li>
+						<li>(105, 1)</li>
+					  </points>
+					</oldHairAgeCurve>
+					<oldHairColorGen Class="ColorGenerator_Options">
+					  <options>
+						<li>
+						  <min>(0.65,0.65,0.65)</min>
+						  <max>(0.85,0.85,0.85)</max>
+						</li>
+					  </options>
+					</oldHairColorGen>
+				
+				
+					<!-- game looks for files in the <head> path named aliencrowntypes_south, _east, _north (And _west, if present, it is not required though) (If genderedHeads is enabled suffix should me _Male_south or _Female_south)(Masks use the same nameing convetion but with an m at the end e.g. _southm)-->
+					<headTypes>
+						<li>NyaronAmber</li>
+						<li>NyaronRed</li>
+						<li>NyaronViolet</li>
+						<li>NyaronSilver</li>
+						<li>NyaronGreen</li>
+					</headTypes>
+					<!-- game looks for files in the <body> path named alienbodytypes_south, _east, _north (And _west, if present, it is not required though) (If genderedHeads is enabled suffix should me _Male_south or _Female_south)(Masks use the same nameing convetion but with an m at the end e.g. _southm)-->
+					<bodyTypes>
+						<li>Female</li>
+						<li>Thin</li>
+						<li MayRequire="Ludeon.RimWorld.Biotech">Baby</li>
+						<li MayRequire="Ludeon.RimWorld.Biotech">Child</li>
+					</bodyTypes>
+					<headOffset>(0.0, 0.0)</headOffset>
+					<headOffsetDirectional>
+						<south>(0.005,-0.01)</south>
+						<north>(0.005,-0.01)</north>
+						<east>(-0.04,0.01)</east>
+						<west>(0.04,0.01)</west>
+					</headOffsetDirectional>
+					
+					
+				<!-- 피부 프리셋색상 설정 --> 
+				
+				
+					<colorChannels Inherit="False">
+						<li>
+							<name>skin</name>
+							<first Class="AlienRace.ColorGenerator_SkinColorMelanin">
+								<minMelanin>0.01</minMelanin>
+								<maxMelanin>0.08</maxMelanin>
+							</first>
+							<second Class="ColorGenerator_Options">
+								<options>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(255,197,181,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(255,242,209,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(255,230,186,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(255,204,163,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(250,222,201,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(227,166,130,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(204,161,130,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(145,97,74,255)</only>
+									</li>
+								</options>
+							</second>			
+						</li>
+						<li>
+							<name>hair</name>
+							<first Class="ColorGenerator_Options">
+								<options>
+									 
+									<li>
+										<weight>4</weight>
+										<only>RGBA(33,33,33,255)</only>
+									</li>
+									<li>
+										<weight>4</weight>
+										<only>RGBA(255,230,102,255)</only>
+									</li>
+									<li>
+										<weight>4</weight>
+										<only>RGBA(112,71,41,255)</only>
+									</li>
+									 <li>
+										<weight>3</weight>
+										<only>RGBA(250,255,250,255)</only>
+									</li>
+									<li>
+										<weight>3</weight>
+										<only>RGBA(33,31,48,255)</only>
+									</li>
+									<li>
+										<weight>2</weight>
+										<only>RGBA(255,128,89,255)</only>
+									</li>
+									<li>
+										<weight>2</weight>
+										<only>RGBA(237,230,196,255)</only>
+									</li>
+									<li>
+										<weight>2</weight>
+										<only>RGBA(245,245,219,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(94,158,161,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(176,230,156,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(150,0,23,255)</only>
+									</li>
+									<li>
+										<weight>1</weight>
+										<only>RGBA(255,115,153,255)</only>
+									</li>
+								</options>
+							</first>
+						</li>
+					</colorChannels>
+					<customDrawSize>(1, 1)</customDrawSize>
+					<customHeadDrawSize>(0.9, 0.9)</customHeadDrawSize>
+					<customPortraitDrawSize>(1, 1)</customPortraitDrawSize>
+					<bodyAddons>
+					<li>
+						<path>Things/Pawn/Addons/Tails/Tail</path>
+						<bodyPartLabel>tail</bodyPartLabel>
+						<drawSize>1</drawSize>
+						<colorChannel>hair</colorChannel>
+						<scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+						<inFrontOfBody>false</inFrontOfBody>
+						<defaultOffset>Tail</defaultOffset>
+						<shaderType>Cutout</shaderType>
+						<offsets>
+						<south>
+											<bodyTypes>
+											<Male>(0,0)</Male>
+											<Female>(0,0)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0.48)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(0,0.48)</Child>
+											<Thin>(0,0)</Thin>
+											</bodyTypes>
+						</south>
+
+						<north>
+											<bodyTypes>
+											<Male>(0,0.0)</Male>
+											<Female>(0,0.38)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(0,0.5)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(0,0.5)</Child>
+											<Thin>(0,0.38)</Thin>
+											</bodyTypes>
+						</north>
+
+						<east>
+											<bodyTypes>
+											<Male>(0,0)</Male>
+											<Female>(-0.04,0.05)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.18,0.18)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.18,0.18)</Child>
+											<Thin>(-0.04,0.05)</Thin>
+											</bodyTypes>
+						</east>
+						</offsets>
+						<hediffGraphics>
+						</hediffGraphics>
+					</li>
+					
+					<li>
+						<path>Things/Pawn/Addons/Ears/Cat_LeftBackEar</path>
+						<bodyPartLabel>left ear</bodyPartLabel>
+						<drawSize>1</drawSize>
+						<colorChannel>hair</colorChannel>
+						<scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+						<inFrontOfBody>false</inFrontOfBody>
+						<linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+						<alignWithHead>true</alignWithHead>
+						<defaultOffset>Tail</defaultOffset>
+						<shaderType>CutoutComplex</shaderType>
+						<offsets>
+						 <south>
+											<bodyTypes>
+											<Male>(-0.44,0.22)</Male>
+											<Female>(-0.44,0.22)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.44,0.2)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.44,0.22)</Child>
+											<Thin>(-0.44,0.22)</Thin>
+											</bodyTypes>
+						</south>
+
+						<north>
+											<bodyTypes>
+											<Male>(0.02,0.56)</Male>
+											<Female>(0.02,0.56)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(0.01,0.54)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(0.03,0.56)</Child>
+											<Thin>(0.02,0.56)</Thin>
+											</bodyTypes>
+						</north>
+						<east>
+						
+											<bodyTypes>
+											<Male>(-0.4,0.23)</Male>
+											<Female>(-0.4,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.225)</Child>
+											<Thin>(-0.4,0.23)</Thin>
+											</bodyTypes>
+						</east>
+				
+						<west>
+						
+											<bodyTypes>
+											<Male>(-0.33,0.23)</Male>
+											<Female>(-0.33,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.38,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.35,0.225)</Child>
+											<Thin>(-0.33,0.23)</Thin>
+											</bodyTypes>
+						</west>
+						</offsets>
+						<hediffGraphics>
+						</hediffGraphics>
+						<hiddenUnderApparelFor>
+						<li>Nr_Ears</li>
+						</hiddenUnderApparelFor>
+					</li>
+					<li>
+						<path>Things/Pawn/Addons/Ears/Cat_LeftFrontEar</path>
+						<bodyPartLabel>left ear</bodyPartLabel>
+						<drawSize>1</drawSize>
+						<colorChannel>hair</colorChannel>
+						<scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+						<inFrontOfBody>true</inFrontOfBody>
+						<linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+						<alignWithHead>true</alignWithHead>
+						<defaultOffset>Tail</defaultOffset>
+						<shaderType>CutoutComplex</shaderType>
+						<offsets>
+						 <south>
+											<bodyTypes>
+											<Male>(-0.44,0.22)</Male>
+											<Female>(-0.44,0.22)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.44,0.2)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.44,0.22)</Child>
+											<Thin>(-0.44,0.22)</Thin>
+											</bodyTypes>
+						</south>
+
+						<north>
+											<bodyTypes>
+											<Male>(0.02,0.56)</Male>
+											<Female>(0.02,0.56)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(0.01,0.54)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(0.03,0.56)</Child>
+											<Thin>(0.02,0.56)</Thin>
+											</bodyTypes>
+						</north>
+						<east>
+						
+											<bodyTypes>
+											<Male>(-0.4,0.23)</Male>
+											<Female>(-0.4,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.225)</Child>
+											<Thin>(-0.4,0.23)</Thin>
+											</bodyTypes>
+						</east>
+				
+						<west>
+						
+											<bodyTypes>
+											<Male>(-0.33,0.23)</Male>
+											<Female>(-0.33,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.38,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.35,0.225)</Child>
+											<Thin>(-0.33,0.23)</Thin>
+											</bodyTypes>
+						</west>
+						</offsets>
+						<hediffGraphics>
+						</hediffGraphics>
+						<hiddenUnderApparelFor>
+						<li>Nr_Ears</li>
+						</hiddenUnderApparelFor>
+					</li>
+					<li>
+						<path>Things/Pawn/Addons/Ears/Cat_RightBackEar</path>
+						<bodyPartLabel>right ear</bodyPartLabel>
+						<drawSize>1</drawSize>
+						<colorChannel>hair</colorChannel>
+						<scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+						<inFrontOfBody>false</inFrontOfBody>
+						<linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+						<alignWithHead>true</alignWithHead>
+						<defaultOffset>Tail</defaultOffset>
+						<shaderType>CutoutComplex</shaderType>
+						<offsets>
+						 <south>
+											<bodyTypes>
+											<Male>(-0.415,0.22)</Male>
+											<Female>(-0.415,0.22)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.2)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.22)</Child>
+											<Thin>(-0.415,0.22)</Thin>
+											</bodyTypes>
+						</south>
+
+						<north>
+											<bodyTypes>
+											<Male>(-0.035,0.56)</Male>
+											<Female>(-0.035,0.56)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.01,0.54)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.03,0.56)</Child>
+											<Thin>(-0.035,0.56)</Thin>
+											</bodyTypes>
+						</north>
+						<east>
+						
+											<bodyTypes>
+											<Male>(-0.4,0.23)</Male>
+											<Female>(-0.4,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.225)</Child>
+											<Thin>(-0.4,0.23)</Thin>
+											</bodyTypes>
+						</east>
+				
+						<west>
+						
+											<bodyTypes>
+											<Male>(-0.33,0.23)</Male>
+											<Female>(-0.33,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.38,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.35,0.225)</Child>
+											<Thin>(-0.33,0.23)</Thin>
+											</bodyTypes>
+						</west>
+						</offsets>
+						<hediffGraphics>
+						</hediffGraphics>
+						
+						<hiddenUnderApparelFor>
+						<li>Nr_Ears</li>
+						</hiddenUnderApparelFor>
+					</li>
+					<li>
+						<path>Things/Pawn/Addons/Ears/Cat_RightFrontEar</path>
+						<bodyPartLabel>right ear</bodyPartLabel>
+						<drawSize>1</drawSize>
+						<colorChannel>hair</colorChannel>
+						<scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+						<inFrontOfBody>true</inFrontOfBody>
+						<linkVariantIndexWithPrevious>true</linkVariantIndexWithPrevious>
+						<alignWithHead>true</alignWithHead>
+						<defaultOffset>Tail</defaultOffset>
+						<shaderType>CutoutComplex</shaderType>
+						<offsets>
+						 <south>
+											<bodyTypes>
+											<Male>(-0.415,0.22)</Male>
+											<Female>(-0.415,0.22)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.2)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.22)</Child>
+											<Thin>(-0.415,0.22)</Thin>
+											</bodyTypes>
+						</south>
+
+						<north>
+											<bodyTypes>
+											<Male>(-0.035,0.56)</Male>
+											<Female>(-0.035,0.56)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.01,0.54)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.03,0.56)</Child>
+											<Thin>(-0.035,0.56)</Thin>
+											</bodyTypes>
+						</north>
+						<east>
+						
+											<bodyTypes>
+											<Male>(-0.4,0.23)</Male>
+											<Female>(-0.4,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.41,0.225)</Child>
+											<Thin>(-0.4,0.23)</Thin>
+											</bodyTypes>
+						</east>
+				
+						<west>
+						
+											<bodyTypes>
+											<Male>(-0.33,0.23)</Male>
+											<Female>(-0.33,0.23)</Female>
+											<Baby MayRequire="Ludeon.RimWorld.Biotech">(-0.38,0.22)</Baby>
+											<Child MayRequire="Ludeon.RimWorld.Biotech">(-0.35,0.225)</Child>
+											<Thin>(-0.33,0.23)</Thin>
+											</bodyTypes>
+						</west>
+						</offsets>
+						<hediffGraphics>
+						</hediffGraphics>
+						
+						<hiddenUnderApparelFor>
+						<li>Nr_Ears</li>
+						</hiddenUnderApparelFor>
+					</li>
+					</bodyAddons>
+				</alienPartGenerator>
+            <chemicalSettings>
+            </chemicalSettings>
+			<reproduction>
+				<childKindDef MayRequire="Ludeon.RimWorld.Biotech">Tribal_Child</childKindDef>
+			</reproduction>
+			<growthAges>
+				<li>7</li>
+				<li>9</li>
+				<li>12</li>
+			</growthAges>
+        </generalSettings>
+        <relationSettings>
+            <relationChanceModifierChild>0</relationChanceModifierChild>
+            <relationChanceModifierExLover>0</relationChanceModifierExLover>
+            <relationChanceModifierExSpouse>0</relationChanceModifierExSpouse>
+            <relationChanceModifierFiance>0</relationChanceModifierFiance>
+            <relationChanceModifierLover>0</relationChanceModifierLover>
+            <relationChanceModifierParent>0</relationChanceModifierParent>
+            <relationChanceModifierSibling>0</relationChanceModifierSibling>
+            <relationChanceModifierSpouse>0</relationChanceModifierSpouse>
+        </relationSettings>
+		
+		<styleSettings>
+                <li>
+                <key>HairDef</key>
+                <value>
+                    <hasStyle>true</hasStyle>
+                    <styleTagsOverride>
+                        <li>Nyaron</li>
+                    </styleTagsOverride>
+                </value>
+            </li>
+            <li>
+                    <key>BeardDef</key>
+                <value>
+                    <hasStyle>false</hasStyle>
+                </value>
+            </li>
+            <li>
+                <key>TattooDef</key>
+                <value>
+                    <hasStyle>false</hasStyle>
+                </value>
+            </li>
+        </styleSettings>
+		<thoughtSettings>
+
+			
+			<cannotReceiveThoughts>
+			<li>NeedOutdoors</li>
+			<li>EnvironmentDark</li>
+			</cannotReceiveThoughts>
+			
+			
+			<restrictedThoughts>
+			<li>NyaronNeedOutdoors</li>
+			</restrictedThoughts>
+		</thoughtSettings>
+		
+		
+        <raceRestriction>
+		<!-- some error issue
+		<geneList>
+			<li>Hair_NyaronA</li>
+			<li>Hair_NyaronB</li>
+			<li>Hair_NyaronC</li>
+			<li>Hair_NyaronD</li>
+			<li>Hair_NyaronE</li>
+			<li>Hair_NyaronF</li>
+			<li>Hair_NyaronG</li>
+			<li>Hair_NyaronH</li>
+			<li>Hair_NyaronI</li>
+			<li>Hair_NyaronJ</li>
+			<li>Hair_NyaronK</li>
+			<li>Hair_NyaronL</li>
+			<li>Hair_NyaronM</li>
+		</geneList>
+		-->
+        <blackGeneList>
+				<li MayRequire="Ludeon.RimWorld.Biotech">Body_Fat</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Body_Hulk</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Body_Thin</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Ears_Pig</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Ears_Human</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Ears_Floppy</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Ears_Cat</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Ears_Pointed</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Nose_Human</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Nose_Pig</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Jaw_Baseline</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Jaw_Heavy</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Head_Gaunt</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Hands_Pig</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Hair_BaldOnly</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Beard_Always</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">ElongatedFingers</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Headbone_MiniHorns</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Headbone_CenterHorn</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">VoicePig</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">VoiceRoar</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_LightGray</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_SlateGray</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_Blue</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_Purple</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_PaleRed</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_DeepRed</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_PaleYellow</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_DeepYellow</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_Orange</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Skin_Green</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Furskin</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Eyes_Red</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Eyes_Gray</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Brow_Heavy</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Tail_Furry</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Tail_Smooth</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">FacialRidges</li>
+                <li MayRequire="Ludeon.RimWorld.Biotech">Beauty_VeryUgly</li>
+        </blackGeneList>
+		<blackEndoCategories>
+			<li MayRequire="Ludeon.RimWorld.Biotech">Melanin</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">BodyType</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">HairColor</li>
+		</blackEndoCategories>
+		<onlyUseRaceRestrictedApparel>false</onlyUseRaceRestrictedApparel>
+		<apparelList>
+              <li>Nr_CatHoodie</li>
+			  <li>Nr_CatJacket</li>
+			  <li>Nr_PowerArmor</li>
+			  <li>Nr_PowerArmorHelmet</li>
+			  <li>Nr_SUniform</li>
+			  <li>Nr_CatMaid</li>
+			  <li>Nr_CatMaidBand</li>
+        </apparelList>
+		<weaponList>
+			<li>Nr_Clawbar</li>
+			<li>Nr_Karambit</li>
+		</weaponList>
+		<whiteApparelList>
+		</whiteApparelList>
+            <researchList>
+                <li>
+                    <projects>
+                    </projects>
+                    <apparelList>
+                    </apparelList>
+                </li>
+            </researchList>
+            <recipeList>
+            </recipeList>
+        </raceRestriction>
+    </alienRace>
+		<statBases>
+	  <MarketValue>3000</MarketValue>
+	  <RoyalFavorValue>5</RoyalFavorValue>
+	  <CarryingCapacity>75</CarryingCapacity>
+	  <GlobalLearningFactor>1.0</GlobalLearningFactor>
+	  <PsychicSensitivity>0.8</PsychicSensitivity>
+	  <RestRateMultiplier>0.8</RestRateMultiplier>
+	  <WorkSpeedGlobal>0.7</WorkSpeedGlobal>
+	  <ForagedNutritionPerDay>0</ForagedNutritionPerDay>
+	  <NegotiationAbility>1.2</NegotiationAbility>
+	  <SocialImpact>1.2</SocialImpact>
+	  <TradePriceImprovement>1.2</TradePriceImprovement>
+      <LeatherAmount>40</LeatherAmount>
+      <Flammability>1.0</Flammability>
+	  <PainShockThreshold>0.82</PainShockThreshold>
+	  <MentalBreakThreshold>0.30</MentalBreakThreshold>
+      <ComfyTemperatureMin>22</ComfyTemperatureMin>
+      <ComfyTemperatureMax>40</ComfyTemperatureMax>
+	  <MoveSpeed>5.2</MoveSpeed>
+	  <AimingDelayFactor>0.95</AimingDelayFactor>
+	  <MeleeDodgeChance>10</MeleeDodgeChance>
+	  <MeleeHitChance>1.2</MeleeHitChance>
+
+    </statBases>
+        <tools>
+      <li>
+        <label>Left Nyan Punch</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>10</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+      <li>
+        <label>Right Nyan Punch</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+      <li>
+        <label>Teeth</label>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+      <li>
+        <label>Headbutt</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.07</chanceFactor>
+      </li>
+    </tools>
+    <race>
+      <thinkTreeMain>Humanlike</thinkTreeMain>
+      <thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+      <intelligence>Humanlike</intelligence>
+      <makesFootprints>true</makesFootprints>
+      <lifeExpectancy>65</lifeExpectancy>
+      <leatherDef>Leather_Nyaron</leatherDef>
+	  <fleshType>Flesh_Nyaron</fleshType>
+	  <nameGenerator>NamerNyaronMale</nameGenerator>
+      <nameGeneratorFemale>NamerNyaronFemale</nameGeneratorFemale>
+	  <body>Nyaron</body>
+      <bloodDef>Filth_Blood_Nyaron</bloodDef>	
+      <meatColor>(219, 105, 82)</meatColor>
+      <baseBodySize>1</baseBodySize>
+      <baseHealthScale>2</baseHealthScale>
+      <foodType>OmnivoreHuman</foodType>
+      <gestationPeriodDays>18</gestationPeriodDays>
+      <litterSizeCurve>
+        <points>
+          <li>(0.5, 0)</li>
+          <li>(1, 1)</li>
+          <li>(1.01, 0.02)</li>
+          <li>(3.5, 0)</li>
+        </points>
+      </litterSizeCurve>
+      <lifeStageAges>
+        <li>
+          <def>HumanlikeBaby</def>
+          <minAge>0</minAge>
+		  
+	  <soundWounded>Pawn_Cat_Injured</soundWounded>
+	  <soundDeath>Pawn_Cat_Death</soundDeath>
+        </li>
+        <li>
+          <def>HumanlikeChild</def>
+          <minAge>4</minAge>
+		
+	  <soundWounded>Pawn_Cat_Injured</soundWounded>
+	  <soundDeath>Pawn_Cat_Death</soundDeath>
+        </li>
+        <li MayRequire="Ludeon.RimWorld.Biotech">
+            <def>HumanlikePreTeenager</def>
+            <minAge>6</minAge>
+			
+	  <soundWounded>Pawn_Cat_Injured</soundWounded>
+	  <soundDeath>Pawn_Cat_Death</soundDeath>
+          </li>
+        <li>
+          <def>HumanlikeTeenager</def>
+          <minAge>12</minAge>
+		  
+	  <soundWounded>Pawn_Cat_Injured</soundWounded>
+	  <soundDeath>Pawn_Cat_Death</soundDeath>
+        </li>
+        <li>
+          <def>HumanlikeAdult</def>
+          <minAge>16</minAge>
+		  
+	  <soundWounded>Pawn_Cat_Injured</soundWounded>
+	  <soundDeath>Pawn_Cat_Death</soundDeath>
+        </li>
+      </lifeStageAges>
+      <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
+        <Firefighter>6</Firefighter>
+        <Patient>0</Patient>
+        <Doctor>10</Doctor>
+        <PatientBedRest>0</PatientBedRest>
+        <Childcare MayRequire="Ludeon.RimWorld.Biotech">0</Childcare>
+        <BasicWorker>3</BasicWorker>
+        <Warden>10</Warden>
+        <Handling>6</Handling>
+        <Cooking>6</Cooking>
+        <Hunting>6</Hunting>
+        <Construction>10</Construction>
+        <Growing>6</Growing>
+        <Mining>6</Mining>
+        <PlantCutting>6</PlantCutting>
+        <Smithing>13</Smithing>
+        <Tailoring>6</Tailoring>
+        <Art>10</Art>
+        <Crafting>6</Crafting>
+        <Hauling>3</Hauling>
+        <Cleaning>3</Cleaning>
+        <Research>13</Research>
+      </lifeStageWorkSettings>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+      <specialShadowData>
+        <volume>(0.3, 0.8, 0.4)</volume>
+        <offset>(0,0,-0.3)</offset>
+      </specialShadowData>
+      <ageGenerationCurve>
+        <points>
+            <li MayRequire="Ludeon.RimWorld.Biotech">(0,0)</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">(0.001,43)</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">(8,86)</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">(12.5,118)</li>  <!-- Exclude 12.5-13 years to avoid spawning pawns who are very close to becoming adults -->  
+            <li MayRequire="Ludeon.RimWorld.Biotech">(12.51,0)</li>  
+            <li MayRequire="Ludeon.RimWorld.Biotech">(13,0)</li>      
+            <li MayRequire="Ludeon.RimWorld.Biotech">(13.001,122)</li><!-- End exclude -->
+            <li MayRequire="Ludeon.RimWorld.Biotech">(13.999,130)</li>
+            <li>(14,0)</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">(14.001,130)</li>
+	        <li>(16,60)</li>
+		    <li>(23,100)</li>
+            <li>(32,0)</li>
+        </points>
+      </ageGenerationCurve>
+      <hediffGiverSets>
+        <li>OrganicStandard</li>
+        <li>Human</li>
+      </hediffGiverSets>
+    </race>
+    <recipes>
+      <li>ExciseCarcinoma</li>
+      <li>AdministerMechSerumHealer</li>
+      <li>RemoveBodyPart</li>
+      <li>Euthanize</li>
+      <li>Anesthetize</li>
+      <li>CureScaria</li>
+      <li MayRequire="Ludeon.RimWorld.Royalty">CureBloodRot</li>
+      <li MayRequire="Ludeon.RimWorld.Royalty">CureAbasia</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">Vasectomy</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ReverseVasectomy</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">TubalLigation</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ExtractOvum</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ExtractHemogenPack</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">BloodTransfusion</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ImplantXenogerm</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">ImplantIUD</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">RemoveIUD</li>
+      <li MayRequire="Ludeon.RimWorld.Biotech">TerminatePregnancy</li>
+
+    </recipes>
+</AlienRace.ThingDef_AlienRace>
+
+</Defs>

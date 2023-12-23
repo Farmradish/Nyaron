@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronA</defName>
+    <label>nyaronA</label>
+    <hairColorOverride>(33,33,33)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>301</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronB</defName>
+    <label>nyaronB</label>
+    <hairColorOverride>(255,230,102)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>302</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronC</defName>
+    <label>nyaronC</label>
+    <hairColorOverride>(112,71,40)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>303</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronD</defName>
+    <label>nyaronD</label>
+    <hairColorOverride>(248,255,242)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>304</displayOrderInCategory>
+  </GeneDef>
+  
+      <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronE</defName>
+    <label>nyaronE</label>
+    <hairColorOverride>(112,71,40)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>305</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronF</defName>
+    <label>nyaronF</label>
+    <hairColorOverride>(32,30,48)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>306</displayOrderInCategory>
+  </GeneDef>
+  
+        <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronG</defName>
+    <label>nyaronG</label>
+    <hairColorOverride>(255,128,86)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>307</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronH</defName>
+    <label>nyaronH</label>
+    <hairColorOverride>(232,225,192)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>308</displayOrderInCategory>
+  </GeneDef>
+  
+          <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronI</defName>
+    <label>nyaronI</label>
+    <hairColorOverride>(240,240,215)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>309</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronJ</defName>
+    <label>nyaronJ</label>
+    <hairColorOverride>(98,155,158)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>310</displayOrderInCategory>
+  </GeneDef>
+  
+            <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronK</defName>
+    <label>nyaronK</label>
+    <hairColorOverride>(172,230,152)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>311</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronL</defName>
+    <label>nyaronL</label>
+    <hairColorOverride>(148,10,22)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>312</displayOrderInCategory>
+  </GeneDef>
+  
+    <GeneDef ParentName="GeneHairColorBase">
+    <defName>Hair_NyaronM</defName>
+    <label>nyaronM</label>
+    <hairColorOverride>(255,115,150)</hairColorOverride>
+    <selectionWeight>0.002</selectionWeight>
+    <displayOrderInCategory>313</displayOrderInCategory>
+  </GeneDef>
+
+
+</Defs>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_NyaronBeam</defName>
+    <graphicData>
+      <texPath>Things/Mote/NrBeam</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <mote>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_StalkBowShot</defName>
+    <graphicData>
+      <texPath>Things/Mote/NrStalkBowShot</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <mote>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.3</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_ChatoyanDamaged</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>0.07</solidTime>
+      <fadeOutTime>0.08</fadeOutTime>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/BloodSplash</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_Lightbringer</defName>
+    <graphicData>
+      <texPath>Things/Mote/BlastEMP</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+	  <drawSize>1.7</drawSize>
+	  <color>(255, 197, 211)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+      <ThingDef ParentName="MoteBase">
+    <defName>Mote_NrUpgrade</defName>
+    <graphicData>
+      <texPath>Things/Mote/Nr_upgrade</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+	  <drawSize>1</drawSize>
+	  <color>(255, 255, 255)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>0</solidTime>
+      <fadeOutTime>1</fadeOutTime>
+	  <archHeight>0.5</archHeight>
+	  <archDuration>2</archDuration>
+    </mote>
+  </ThingDef>
+</Defs>

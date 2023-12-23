@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="Base_NrItemContainer">
+    <defName>Nr_Upkit</defName>
+    <label>Series-EP Upgrade Kit</label>
+    <description>a Kits to improve the quality of EP-series weapon.\n Note:Use this kit after equipping an EP-series weapon with Quality.</description>
+    <statBases>
+      <MarketValue>5000</MarketValue>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Consumable/EP_Upkit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+		<li Class="CompProperties_Usable">
+			<useJob>UseItem</useJob>
+			<useLabel>Upgrade Primary Weapon</useLabel>
+			<useDuration>300</useDuration>
+		</li>
+		<li Class="Nyaron.CompProperties_UseEffectUpgradeItem">
+		</li>
+    </comps>
+  </ThingDef>
+</Defs>

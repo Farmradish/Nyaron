@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Nr_RapidCaster</defName>
+    <label>Torbica rapidcaster</label>
+    <description>a weapon that fires plasma pulse beam continuously.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/WeaponRanged/RapidCaster</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_ChargeRifle</soundInteract>
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <Mass>3.5</Mass>
+      <AccuracyTouch>0.52</AccuracyTouch>
+      <AccuracyShort>0.47</AccuracyShort>
+      <AccuracyMedium>0.43</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+    </statBases>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>7</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <Plasteel>50</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+	<smeltProducts>
+		<Plasteel>15</Plasteel>
+    </smeltProducts>
+	<thingCategories Inherit="False">
+		<li>Nyaron_WeaponsRanged</li>
+	</thingCategories>
+    <weaponTags Inherit="False">
+      <li>Nyaron_weapon_striker</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Nr_PlasmaPulseBeam</defaultProjectile>
+        <warmupTime>2.2</warmupTime>
+        <range>29.9</range>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>8</burstShotCount>
+        <soundCast>Cripistol_fire</soundCast>
+        <soundCastTail>Secgun_tail</soundCastTail>
+        <muzzleFlashScale>6</muzzleFlashScale>
+      </li>
+	  
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>Nr_PlasmaPulseBeam</defName>
+    <label>Plasma pulse beam</label>
+    <graphicData>
+      <texPath>Things/Projectile/Nyaron/Energy_rapid</texPath>
+	  <drawSize>2</drawSize>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>EnergyBullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <stoppingPower>4</stoppingPower>
+      <speed>65</speed>
+    </projectile>
+  </ThingDef>
+</Defs>

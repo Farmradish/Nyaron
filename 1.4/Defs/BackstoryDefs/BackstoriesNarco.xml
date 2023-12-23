@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+<AlienRace.AlienBackstoryDef ParentName="Nyaron_BaseBackstory">
+    <defName>Nyaron_Adult_Narco</defName>
+    <title>Chives</title>
+    <titleShort>Chives</titleShort>
+    <baseDesc>Why was she named Chives? Is it because her hair is green?</baseDesc>
+	<workDisables>
+    </workDisables>
+    <slot>Adulthood</slot>
+	<spawnCategories>
+      <li>Nyaron_Pawn_bios</li>
+    </spawnCategories>
+  </AlienRace.AlienBackstoryDef>
+
+</Defs>

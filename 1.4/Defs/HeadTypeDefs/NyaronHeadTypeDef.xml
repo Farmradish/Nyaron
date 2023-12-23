@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Bases -->
+  
+  <HeadTypeDef ParentName="AverageBase" Name="NyaronHeadtypeBase" Abstract="True">
+	<gender>Female</gender>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="NyaronHeadtypeBase">
+    <defName>NyaronAmber</defName>
+    <graphicPath>Things/Pawn/Nyaron/Heads/Female_Average_Camber</graphicPath>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="NyaronHeadtypeBase">
+    <defName>NyaronRed</defName>
+    <graphicPath>Things/Pawn/Nyaron/Heads/Female_Average_Cred</graphicPath>
+  </HeadTypeDef>
+  
+  <HeadTypeDef ParentName="NyaronHeadtypeBase">
+    <defName>NyaronViolet</defName>
+    <graphicPath>Things/Pawn/Nyaron/Heads/Female_Average_Cvio</graphicPath>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="NyaronHeadtypeBase">
+    <defName>NyaronSilver</defName>
+    <graphicPath>Things/Pawn/Nyaron/Heads/Female_Average_Normal</graphicPath>
+  </HeadTypeDef>
+
+  <HeadTypeDef ParentName="NyaronHeadtypeBase">
+    <defName>NyaronGreen</defName>
+    <graphicPath>Things/Pawn/Nyaron/Heads/Female_Average_Pointy</graphicPath>
+  </HeadTypeDef>
+</Defs>
