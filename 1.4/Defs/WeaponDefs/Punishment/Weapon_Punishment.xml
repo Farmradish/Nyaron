@@ -38,7 +38,7 @@
         <forcedMissRadius>0.1</forcedMissRadius>
         <warmupTime>5</warmupTime>
         <ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
-        <range>44.9</range>
+        <range>59.9</range>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
         <burstShotCount>1</burstShotCount>
         <soundCast>Nr_beamfire</soundCast>

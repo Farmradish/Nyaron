@@ -4,9 +4,9 @@
   <ThingDef ParentName="Base_NrItemContainer">
     <defName>Nr_Upkit</defName>
     <label>Series-EP Upgrade Kit</label>
-    <description>a Kits to improve the quality of EP-series weapon.\n Note:Use this kit after equipping an EP-series weapon with Quality.</description>
+    <description>A kit that unlocks the limits of EP-series weapons and enhances their performance. \n Note:Use this kit after equipping an EP-series weapon with Quality.</description>
     <statBases>
-      <MarketValue>5000</MarketValue>
+      <MarketValue>3000</MarketValue>
     </statBases>
     <graphicData>
       <texPath>Things/Consumable/EP_Upkit</texPath>

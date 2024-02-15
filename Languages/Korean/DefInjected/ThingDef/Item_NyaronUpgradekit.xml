@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Nr_Upkit.label>EP시리즈 업그레이드 키트</Nr_Upkit.label>
+  <Nr_Upkit.description>EP시리즈 무기의 등급제한을 해제해 높은 성능을 낼 수 있게 만드는 업그레이드 키트입니다.</Nr_Upkit.description>
+  <Nr_Upkit.comps.CompUsable.useLabel>장착된 무기를 업그레이드</Nr_Upkit.comps.CompUsable.useLabel>
+
+
+</LanguageData>

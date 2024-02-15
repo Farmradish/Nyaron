@@ -3,14 +3,25 @@
 
 <Patch>
 
-<Operation Class="PatchOperationAdd">
-<xpath>/Defs/ThingDef[defName="PokerTable"]</xpath>
-	<value>
-		<comps>
-			<li Class="CompProperties_Styleable" />
-		</comps>
-	</value>
+<Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>/Defs/ThingDef[defName="PokerTable"]/comps/li[@Class="CompProperties_Styleable"]</xpath>
+			<success>Invert</success>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="PokerTable"]</xpath>
+			<value>
+				<comps>
+					<li Class="CompProperties_Styleable" />
+				</comps>
+			</value>
+		</li>
+	</operations>
 </Operation>
+
+
 
 </Patch>
 
